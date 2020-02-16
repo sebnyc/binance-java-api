@@ -274,6 +274,13 @@ public interface BinanceApiAsyncRestClient {
   void getDepositHistory(String asset, BinanceApiCallback<DepositHistory> callback);
 
   /**
+   * Fetch account deposit history.
+   *
+   * @param callback the callback that handles the response and returns the deposit history
+   */
+  void getDepositIntervalHistory(String asset, Long startDate, Long endDate, BinanceApiCallback<DepositHistory> callback);
+
+  /**
    * Fetch account withdraw history.
    *
    * @param callback the callback that handles the response and returns the withdraw history

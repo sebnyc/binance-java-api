@@ -132,6 +132,9 @@ public interface BinanceApiService {
     Call<WithdrawResult> withdraw(@Query("asset") String asset, @Query("address") String address, @Query("amount") String amount, @Query("name") String name, @Query("addressTag") String addressTag,
                                   @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET("/wapi/v3/depositHistory.html")
+    Call<DepositHistory> getDepositIntervalHistory(@Query("asset") String asset, @Query("startDate") Long startDate, @Query("endDate") Long endDate, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @GET("/wapi/v3/depositHistory.html")

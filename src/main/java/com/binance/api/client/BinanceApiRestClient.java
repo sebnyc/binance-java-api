@@ -260,6 +260,13 @@ public interface BinanceApiRestClient {
   DepositHistory getDepositHistory(String asset);
 
   /**
+   * Fetch account deposit history.
+   *
+   * @return deposit history, containing a list of deposits
+   */
+  DepositHistory getDepositIntervalHistory(String asset, Long startDate, Long endDate);
+
+  /**
    * Fetch account withdraw history.
    *
    * @return withdraw history, containing a list of withdrawals
