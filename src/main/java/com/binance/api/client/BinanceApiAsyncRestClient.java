@@ -234,6 +234,16 @@ public interface BinanceApiAsyncRestClient {
    * @param fromId TradeId to fetch from. Default gets most recent trades.
    * @param callback the callback that handles the response with a list of trades
    */
+  void getMyTrades(String symbol, Long startDate, Long endDate, Integer limit, Long fromId, Long recvWindow, Long timestamp, BinanceApiCallback<List<Trade>> callback);
+
+  /**
+   * Get trades for a specific account and symbol.
+   *
+   * @param symbol symbol to get trades from
+   * @param limit default 500; max 1000
+   * @param fromId TradeId to fetch from. Default gets most recent trades.
+   * @param callback the callback that handles the response with a list of trades
+   */
   void getMyTrades(String symbol, Integer limit, Long fromId, Long recvWindow, Long timestamp, BinanceApiCallback<List<Trade>> callback);
 
   /**
@@ -252,6 +262,14 @@ public interface BinanceApiAsyncRestClient {
    * @param callback the callback that handles the response with a list of trades
    */
   void getMyTrades(String symbol, BinanceApiCallback<List<Trade>> callback);
+
+  /**
+   * Get trades for a specific account and symbol.
+   *
+   * @param symbol symbol to get trades from
+   * @param callback the callback that handles the response with a list of trades
+   */
+  void getMyTrades(String symbol, Long startDate, Long endDate, BinanceApiCallback<List<Trade>> callback);
 
   /**
    * Submit a withdraw request.
@@ -278,7 +296,7 @@ public interface BinanceApiAsyncRestClient {
    *
    * @param callback the callback that handles the response and returns the deposit history
    */
-  void getDepositIntervalHistory(String asset, Long startDate, Long endDate, BinanceApiCallback<DepositHistory> callback);
+  void getDepositHistory(String asset, Long startDate, Long endDate, BinanceApiCallback<DepositHistory> callback);
 
   /**
    * Fetch account withdraw history.
@@ -286,6 +304,13 @@ public interface BinanceApiAsyncRestClient {
    * @param callback the callback that handles the response and returns the withdraw history
    */
   void getWithdrawHistory(String asset, BinanceApiCallback<WithdrawHistory> callback);
+
+  /**
+   * Fetch account withdraw history.
+   *
+   * @param callback the callback that handles the response and returns the withdraw history
+   */
+  void getWithdrawHistory(String asset, Long startDate, Long endDate, BinanceApiCallback<WithdrawHistory> callback);
 
   /**
    * Fetch deposit address.

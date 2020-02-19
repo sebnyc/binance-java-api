@@ -194,18 +194,28 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
   }
 
   @Override
+  public void getMyTrades(String symbol, Long startDate, Long endDate, Integer limit, Long fromId, Long recvWindow, Long timestamp, BinanceApiCallback<List<Trade>> callback) {
+    binanceApiService.getMyTrades(symbol, null, null, limit, fromId, recvWindow, timestamp).enqueue(new BinanceApiCallbackAdapter<>(callback));
+  }
+
+  @Override
   public void getMyTrades(String symbol, Integer limit, Long fromId, Long recvWindow, Long timestamp, BinanceApiCallback<List<Trade>> callback) {
-    binanceApiService.getMyTrades(symbol, limit, fromId, recvWindow, timestamp).enqueue(new BinanceApiCallbackAdapter<>(callback));
+    getMyTrades(symbol, null, null, limit, fromId, recvWindow, timestamp, callback);
   }
 
   @Override
   public void getMyTrades(String symbol, Integer limit, BinanceApiCallback<List<Trade>> callback) {
-    getMyTrades(symbol, limit, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis(), callback);
+    getMyTrades(symbol, null, null, limit, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis(), callback);
   }
 
   @Override
   public void getMyTrades(String symbol, BinanceApiCallback<List<Trade>> callback) {
-    getMyTrades(symbol, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis(), callback);
+    getMyTrades(symbol, null, null, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis(), callback);
+  }
+
+  @Override
+  public void getMyTrades(String symbol, Long startDate, Long endDate, BinanceApiCallback<List<Trade>> callback) {
+    getMyTrades(symbol, startDate, endDate, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis(), callback);
   }
 
   @Override
@@ -216,20 +226,26 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
 
   @Override
   public void getDepositHistory(String asset, BinanceApiCallback<DepositHistory> callback) {
-    binanceApiService.getDepositHistory(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+    binanceApiService.getDepositHistory(asset, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
         .enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 
   @Override
-  public void getDepositIntervalHistory(String asset, Long startDate, Long endDate, BinanceApiCallback<DepositHistory> callback) {
-    binanceApiService.getDepositIntervalHistory(asset, startDate, endDate, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+  public void getDepositHistory(String asset, Long startDate, Long endDate, BinanceApiCallback<DepositHistory> callback) {
+    binanceApiService.getDepositHistory(asset, startDate, endDate, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
             .enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 
   @Override
   public void getWithdrawHistory(String asset, BinanceApiCallback<WithdrawHistory> callback) {
-    binanceApiService.getWithdrawHistory(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+    binanceApiService.getWithdrawHistory(asset, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
         .enqueue(new BinanceApiCallbackAdapter<>(callback));
+  }
+
+  @Override
+  public void getWithdrawHistory(String asset, Long startDate, Long endDate, BinanceApiCallback<WithdrawHistory> callback) {
+    binanceApiService.getWithdrawHistory(asset, startDate, endDate, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+            .enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 
   @Override

@@ -173,18 +173,28 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
   }
 
   @Override
+  public List<Trade> getMyTrades(String symbol, Long startDate, Long endDate, Integer limit, Long fromId, Long recvWindow, Long timestamp) {
+    return executeSync(binanceApiService.getMyTrades(symbol, startDate, endDate, limit, fromId, recvWindow, timestamp));
+  }
+
+  @Override
   public List<Trade> getMyTrades(String symbol, Integer limit, Long fromId, Long recvWindow, Long timestamp) {
-    return executeSync(binanceApiService.getMyTrades(symbol, limit, fromId, recvWindow, timestamp));
+    return getMyTrades(symbol, null, null, limit, fromId, recvWindow, timestamp);
   }
 
   @Override
   public List<Trade> getMyTrades(String symbol, Integer limit) {
-    return getMyTrades(symbol, limit, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
+    return getMyTrades(symbol, null, null, limit, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
   }
 
   @Override
   public List<Trade> getMyTrades(String symbol) {
-    return getMyTrades(symbol, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
+    return getMyTrades(symbol, null, null, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
+  }
+
+  @Override
+  public List<Trade> getMyTrades(String symbol, Long startDate, Long endDate) {
+    return getMyTrades(symbol, startDate, endDate, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
   }
 
   @Override
@@ -194,17 +204,22 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
 
   @Override
   public DepositHistory getDepositHistory(String asset) {
-    return executeSync(binanceApiService.getDepositHistory(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
+    return executeSync(binanceApiService.getDepositHistory(asset, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
   }
 
   @Override
-  public DepositHistory getDepositIntervalHistory(String asset, Long startDate, Long endDate) {
-    return executeSync(binanceApiService.getDepositIntervalHistory(asset, startDate, endDate, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
+  public DepositHistory getDepositHistory(String asset, Long startDate, Long endDate) {
+    return executeSync(binanceApiService.getDepositHistory(asset, startDate, endDate, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
   }
 
   @Override
   public WithdrawHistory getWithdrawHistory(String asset) {
-    return executeSync(binanceApiService.getWithdrawHistory(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
+    return executeSync(binanceApiService.getWithdrawHistory(asset, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
+  }
+
+  @Override
+  public WithdrawHistory getWithdrawHistory(String asset, Long startDate, Long endDate) {
+    return executeSync(binanceApiService.getWithdrawHistory(asset, startDate, endDate, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
   }
 
   @Override
