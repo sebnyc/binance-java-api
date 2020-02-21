@@ -133,13 +133,13 @@ public interface BinanceApiService {
     Call<List<Trade>> getMyTrades(@Query("symbol") String symbol, @Query("limit") Integer limit, @Query("fromId") Long fromId,
                                   @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
-    //  @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+//  @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
 //  @GET("/wapi/v3/depositHistory.html")
 //  Call<DepositHistory> getDepositHistory(@Query("asset") String asset, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @GET("/wapi/v3/depositHistory.html")
-    Call<DepositHistory> getDepositHistory(@Query("asset") String asset, @Query("startDate") Long startDate, @Query("endDate") Long endDate, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+    Call<DepositHistory> getDepositHistory(@Query("asset") String asset, @Query("startTime") Long startTime, @Query("endTime") Long endTime, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
 //  @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
 //  @GET("/wapi/v3/withdrawHistory.html")
@@ -147,7 +147,7 @@ public interface BinanceApiService {
 
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @GET("/wapi/v3/withdrawHistory.html")
-    Call<WithdrawHistory> getWithdrawHistory(@Query("asset") String asset, @Query("startDate") Long startDate, @Query("endDate") Long endDate, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+    Call<WithdrawHistory> getWithdrawHistory(@Query("asset") String asset, @Query("startTime") Long startTime, @Query("endTime") Long endTime, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @POST("/wapi/v3/withdraw.html")

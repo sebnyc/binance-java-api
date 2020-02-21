@@ -194,7 +194,7 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
   }
 
   @Override
-  public void getMyTrades(String symbol, Long startDate, Long endDate, Integer limit, Long fromId, Long recvWindow, Long timestamp, BinanceApiCallback<List<Trade>> callback) {
+  public void getMyTrades(String symbol, Long startTime, Long endTime, Integer limit, Long fromId, Long recvWindow, Long timestamp, BinanceApiCallback<List<Trade>> callback) {
     binanceApiService.getMyTrades(symbol, null, null, limit, fromId, recvWindow, timestamp).enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 
@@ -214,8 +214,8 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
   }
 
   @Override
-  public void getMyTrades(String symbol, Long startDate, Long endDate, BinanceApiCallback<List<Trade>> callback) {
-    getMyTrades(symbol, startDate, endDate, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis(), callback);
+  public void getMyTrades(String symbol, Long startTime, Long endTime, BinanceApiCallback<List<Trade>> callback) {
+    getMyTrades(symbol, startTime, endTime, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis(), callback);
   }
 
   @Override
@@ -231,8 +231,8 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
   }
 
   @Override
-  public void getDepositHistory(String asset, Long startDate, Long endDate, BinanceApiCallback<DepositHistory> callback) {
-    binanceApiService.getDepositHistory(asset, startDate, endDate, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+  public void getDepositHistory(String asset, Long startTime, Long endTime, BinanceApiCallback<DepositHistory> callback) {
+    binanceApiService.getDepositHistory(asset, startTime, endTime, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
             .enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 
@@ -243,8 +243,8 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
   }
 
   @Override
-  public void getWithdrawHistory(String asset, Long startDate, Long endDate, BinanceApiCallback<WithdrawHistory> callback) {
-    binanceApiService.getWithdrawHistory(asset, startDate, endDate, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
+  public void getWithdrawHistory(String asset, Long startTime, Long endTime, BinanceApiCallback<WithdrawHistory> callback) {
+    binanceApiService.getWithdrawHistory(asset, startTime, endTime, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis())
             .enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 

@@ -220,7 +220,7 @@ public interface BinanceApiRestClient {
    * @param fromId TradeId to fetch from. Default gets most recent trades.
    * @return a list of trades
    */
-  List<Trade> getMyTrades(String symbol, Long startDate, Long endDate, Integer limit, Long fromId, Long recvWindow, Long timestamp);
+  List<Trade> getMyTrades(String symbol, Long startTime, Long endTime, Integer limit, Long fromId, Long recvWindow, Long timestamp);
 
   /**
    * Get trades for a specific account and symbol.
@@ -255,7 +255,7 @@ public interface BinanceApiRestClient {
    * @param symbol symbol to get trades from
    * @return a list of trades
    */
-  List<Trade> getMyTrades(String symbol, Long startDate, Long endDate);
+  List<Trade> getMyTrades(String symbol, Long startTime, Long endTime);
 
   /**
    * Submit a withdraw request.
@@ -282,7 +282,7 @@ public interface BinanceApiRestClient {
    *
    * @return deposit history, containing a list of deposits
    */
-  DepositHistory getDepositHistory(String asset, Long startDate, Long endDate);
+  DepositHistory getDepositHistory(String asset, Long startTime, Long endTime);
 
   /**
    * Fetch account withdraw history.
@@ -296,7 +296,7 @@ public interface BinanceApiRestClient {
    *
    * @return withdraw history, containing a list of withdrawals
    */
-  WithdrawHistory getWithdrawHistory(String asset, Long startDate, Long endDate);
+  WithdrawHistory getWithdrawHistory(String asset, Long startTime, Long endTime);
 
   /**
    * Fetch deposit address.
