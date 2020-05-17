@@ -1,15 +1,6 @@
 package com.binance.api.client;
 
-import com.binance.api.client.domain.account.Account;
-import com.binance.api.client.domain.account.DepositAddress;
-import com.binance.api.client.domain.account.DepositHistory;
-import com.binance.api.client.domain.account.NewOrder;
-import com.binance.api.client.domain.account.NewOrderResponse;
-import com.binance.api.client.domain.account.Order;
-import com.binance.api.client.domain.account.Trade;
-import com.binance.api.client.domain.account.TradeHistoryItem;
-import com.binance.api.client.domain.account.WithdrawHistory;
-import com.binance.api.client.domain.account.WithdrawResult;
+import com.binance.api.client.domain.account.*;
 import com.binance.api.client.domain.account.request.AllOrdersRequest;
 import com.binance.api.client.domain.account.request.CancelOrderRequest;
 import com.binance.api.client.domain.account.request.CancelOrderResponse;
@@ -311,6 +302,13 @@ public interface BinanceApiAsyncRestClient {
    * @param callback the callback that handles the response and returns the withdraw history
    */
   void getWithdrawHistory(String asset, Long startTime, Long endTime, BinanceApiCallback<WithdrawHistory> callback);
+
+  /**
+   * Fetch account dividend history.
+   *
+   * @param callback the callback that handles the response and returns the dividend history
+   */
+  void getDividendHistory(String asset, Long startTime, Long endTime, Integer limit, BinanceApiCallback<DividendHistory> callback);
 
   /**
    * Fetch deposit address.
