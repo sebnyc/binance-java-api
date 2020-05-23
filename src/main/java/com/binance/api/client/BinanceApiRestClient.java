@@ -292,9 +292,15 @@ public interface BinanceApiRestClient {
   /**
    * Fetch account dividend history.
    *
-   * @return deposit history, containing a list of dividends
+   * @return dividend history, containing a list of dividends
    */
   DividendHistory getDividendHistory(String asset, Long startTime, Long endTime, Integer limit);
+
+  /**
+   * Get interests
+   * @return interests history, containing a list of interests
+   */
+  List<Interest> getInterestHistory(String lendingType, String asset, Long startTime, Long endTime, Long current, Long size);
 
   /**
    * Fetch deposit address.

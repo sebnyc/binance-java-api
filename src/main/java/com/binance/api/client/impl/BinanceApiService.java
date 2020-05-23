@@ -162,6 +162,13 @@ public interface BinanceApiService {
     @GET("/sapi/v1/asset/assetDividend")
     Call<DividendHistory> getDividendHistory(@Query("asset") String asset, @Query("startTime") Long startTime, @Query("endTime") Long endTime, @Query("limit") Integer limit, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET("/sapi/v1/lending/union/interestHistory")
+    Call<List<Interest>> getInterestHistory(@Query("lendingType") String lendingType, @Query("asset") String asset,
+                                            @Query("startTime") Long startTime, @Query("endTime") Long endTime,
+                                            @Query("current") Long current, @Query("size") Long size,
+                                            @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+
     // User stream endpoints
 
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_APIKEY_HEADER)
