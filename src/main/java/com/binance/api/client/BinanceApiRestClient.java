@@ -297,6 +297,12 @@ public interface BinanceApiRestClient {
   DividendHistory getDividendHistory(String asset, Long startTime, Long endTime, Integer limit);
 
   /**
+   * Get lending account
+   * @return interests lending account, containing a list of lending balances
+   */
+  LendingAccount getLendingAccount();
+
+  /**
    * Get interests
    * @return interests history, containing a list of interests
    */

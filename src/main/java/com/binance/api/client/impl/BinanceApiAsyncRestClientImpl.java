@@ -245,6 +245,10 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
             .enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 
+  public void getLendingAccount(BinanceApiCallback<LendingAccount> callback) {
+    binanceApiService.getLendingAccount(BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()).enqueue(new BinanceApiCallbackAdapter<>(callback));
+  }
+
   public void getInterestHistory(String lendingType, String asset, Long startTime, Long endTime, Long current, Long size, BinanceApiCallback<List<Interest>> callback) {
     binanceApiService.getInterestHistory(lendingType, asset, startTime, endTime, current, size, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()).enqueue(new BinanceApiCallbackAdapter<>(callback));
   }

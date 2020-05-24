@@ -169,7 +169,11 @@ public interface BinanceApiService {
                                             @Query("current") Long current, @Query("size") Long size,
                                             @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
-    // User stream endpoints
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET("/sapi/v1/lending/union/account")
+    Call<LendingAccount> getLendingAccount(@Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+
+     // User stream endpoints
 
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_APIKEY_HEADER)
     @POST("/api/v1/userDataStream")

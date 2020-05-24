@@ -228,6 +228,11 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
   }
 
   @Override
+  public LendingAccount getLendingAccount() {
+    return executeSync(binanceApiService.getLendingAccount(BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
+  }
+
+  @Override
   public List<Interest> getInterestHistory(String lendingType, String asset, Long startTime, Long endTime, Long current, Long size) {
     return executeSync(binanceApiService.getInterestHistory(lendingType, asset, startTime, endTime, current, size, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
   }

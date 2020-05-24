@@ -311,6 +311,11 @@ public interface BinanceApiAsyncRestClient {
   void getDividendHistory(String asset, Long startTime, Long endTime, Integer limit, BinanceApiCallback<DividendHistory> callback);
 
   /**
+   * Get lending account
+   */
+  void getLendingAccount(BinanceApiCallback<LendingAccount> callback);
+
+  /**
    * Get interests
    */
   void getInterestHistory(String lendingType, String asset, Long startTime, Long endTime, Long current, Long size, BinanceApiCallback<List<Interest>> callback);
