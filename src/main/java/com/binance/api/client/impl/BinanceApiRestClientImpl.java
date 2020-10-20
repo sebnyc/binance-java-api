@@ -183,6 +183,11 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
   }
 
   @Override
+  public List<Trade> getMyTrades(String symbol, Integer limit, Long fromId) {
+    return getMyTrades(symbol, null, null, limit, fromId, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
+  }
+
+  @Override
   public List<Trade> getMyTrades(String symbol, Integer limit) {
     return getMyTrades(symbol, null, null, limit, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
   }

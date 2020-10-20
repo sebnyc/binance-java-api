@@ -228,6 +228,16 @@ public interface BinanceApiRestClient {
    *
    * @param symbol symbol to get trades from
    * @param limit default 500; max 1000
+   * @param fromId TradeId to fetch from. Default gets most recent trades.
+   * @return a list of trades
+   */
+  List<Trade> getMyTrades(String symbol, Integer limit, Long fromId);
+
+  /**
+   * Get trades for a specific account and symbol.
+   *
+   * @param symbol symbol to get trades from
+   * @param limit default 500; max 1000
    * @return a list of trades
    */
   List<Trade> getMyTrades(String symbol, Integer limit);

@@ -242,6 +242,16 @@ public interface BinanceApiAsyncRestClient {
    *
    * @param symbol symbol to get trades from
    * @param limit default 500; max 1000
+   * @param fromId TradeId to fetch from. Default gets most recent trades.
+   * @param callback the callback that handles the response with a list of trades
+   */
+  void getMyTrades(String symbol, Integer limit, Long fromId, BinanceApiCallback<List<Trade>> callback);
+
+  /**
+   * Get trades for a specific account and symbol.
+   *
+   * @param symbol symbol to get trades from
+   * @param limit default 500; max 1000
    * @param callback the callback that handles the response with a list of trades
    */
   void getMyTrades(String symbol, Integer limit, BinanceApiCallback<List<Trade>> callback);

@@ -195,6 +195,11 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
   }
 
   @Override
+  public void getMyTrades(String symbol, Integer limit, Long fromId, BinanceApiCallback<List<Trade>> callback) {
+    getMyTrades(symbol, null, null, limit, fromId, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis(), callback);
+  }
+
+  @Override
   public void getMyTrades(String symbol, Integer limit, BinanceApiCallback<List<Trade>> callback) {
     getMyTrades(symbol, null, null, limit, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis(), callback);
   }
